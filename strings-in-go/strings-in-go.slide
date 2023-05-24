@@ -1,0 +1,55 @@
+# Strings in Go
+
+Gianluca Bortoli
+
+
+25 Mar 2023
+(Inspired by go.dev/blog/slices and go.dev/blog/strings)
+
+
+## What is a slice?
+
+* Data structure describing a contiguous section of an array stored separately from the slice variable itself
+* Describes a piece of an array, not an array
+* Arrays are building blocks for other variable-sized data structures
+* Note: the size of an array is part of its type definition
+
+
+## What is a string?
+
+* Read-only slice of bytes with some syntactic sugar
+  * No need for capacity
+  * Cannot grow in size
+  * For all the rest they're "just" a slice
+* Holds arbitrary bytes
+
+
+## If strings hold bytes, what's a character?
+
+Go source code is always UTF-8
+
+Unicode refers to “code point” to identify the item represented by a single value
+(eg. the unicode code point U+0061 is the lower case letter ‘A’: ‘a‘)
+
+Unicode is a character set (translates ~characters to numbers)
+
+UTF-8 is a variable-length encoding (translates numbers to binary)
+
+In Go the `rune` type is the unicode "code point", which is an alias for `int32`
+
+
+## Iterating a string
+
+.play normal-for.go
+.play for-range.go
+
+
+## Iterating a string (cont'd)
+
+`for range` loop on a string treats UTF-8 in a special way
+
+Decodes one UTF-8-encoded rune on each iteration
+
+Every cycle
+* the index of the loop is the starting position of the current rune, measured in bytes
+* the code point is its value
