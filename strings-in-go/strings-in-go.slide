@@ -30,8 +30,6 @@ var s []int    // slice
 
 ## If strings hold bytes, what's a character?
 
-
-
 Unicode refers to “code point” to identify the item represented by a single value
 (eg. the unicode code point U+0061 is the lower case letter ‘A’: ‘a‘ of the Latin alphabet)
 
